@@ -6,51 +6,51 @@ The goal of this repository is to abstract the complexity when creating a WebDAV
 
 # Installation
 
-''' bash 
+'''bash 
 git clone https://github.com/braxtonhardman/webdav-server.git
 ''' 
 
 Then change directory to the webdav-server directory
 
-''' bash 
+'''bash 
 cd webdav-server
 '''
 
 In order for script to work to handle CLI webdav-server must be in /Users/current_users/ directory. 
 Move folder to specified directory 
 
-''' bash 
+'''bash 
 mv ./ /Users/current_user/ 
 '''
 
 To execute commands 
 
-''' bash 
+'''bash 
 cd webdav-server/scripts/ 
 '''
 
 Then use
  
-''' bash 
+'''bash 
 ./webdav-server.sh start 
 '''
 
 to start a server. 
 For more commands use 
 
-''' bash 
+'''bash 
 ./webdav-server.sh commands
 '''
 
 For ease of use to execute commands from anywhere in system. 
 Make sure current directory is ~/webdav-server/scripts/ then move the script to /usr/local/bin 
 
-''' bash 
+'''bash 
 sudo mv webdav-server.sh /usr/local/bin
 '''
 
 Now commands can be executed as following: 
 
-''' bash 
+'''bash 
 webdav-server <options> 
 '''
