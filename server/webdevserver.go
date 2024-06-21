@@ -1,7 +1,6 @@
 package webdevserver
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
