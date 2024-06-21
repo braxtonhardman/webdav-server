@@ -5,9 +5,7 @@ Specifically webdav-server is set up to integrate with linux like operating syst
 The goal of this repository is to abstract the complexity when creating a WebDAV server, for use in home enviroments. 
 # Prerequsites
 
-Make sure Go is installed 
-Check any firewalls permissions 
-
+Make sure Go is installed and check any firewalls permissions
 
 # Installation
 
