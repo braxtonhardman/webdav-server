@@ -46,5 +46,5 @@ sudo mv webdav-server.sh /usr/local/bin
 Now commands can be executed as following: 
 
 ```bash 
-webdav-server <options> 
+webdav-server.sh <options> 
 ```
