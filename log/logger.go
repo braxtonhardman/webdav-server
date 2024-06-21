@@ -15,9 +15,8 @@ var systemPath string
 
 func Start() {
 
+	// Creates path for directory if not already created 
 	var homeDir string = createDir()
-
-    // rootDir := filepath.Join(homeDir, "webdav-server", "log")
 
 	errorPath = filepath.Join(homeDir, "error_log.txt")
 	systemPath = filepath.Join(homeDir, "system_log.txt")
@@ -39,6 +38,8 @@ func Start() {
 
 }
 
+// Gets current users home directory and makes sure the directories exist. 
+// If not will create all the needed directories. 
 func createDir() string {
 	currentUser, err := user.Current()
 	if err != nil {
@@ -66,6 +67,8 @@ func createDir() string {
 	return dir
 }
 
+// Checks if the needed error and system log files exist. 
+// If not creates the necessary files. 
 func createFile(filePath string, wg *sync.WaitGroup) {
 	defer wg.Done()
 
@@ -80,7 +83,6 @@ func createFile(filePath string, wg *sync.WaitGroup) {
 
 		log.Printf("Created file: %s", filePath)
 	} else if err != nil {
-		// Error occurred while checking if file exists
 		log.Fatalf("Error checking if file %s exists: %s", filePath, err)
 	} else {
 		// Clear File of pervious data 
@@ -98,8 +100,8 @@ func createFile(filePath string, wg *sync.WaitGroup) {
 	}
 }
 
-
 func LogError(e error) {
+
 	// Open the file for appending or create it if it doesn't exist
 	file, err := os.OpenFile(errorPath, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
 	if err != nil {
@@ -116,6 +118,7 @@ func LogError(e error) {
 }
 
 func LogSystem(data string) {
+	
 	// Open the file for appending or create it if it doesn't exist
 	file, err := os.OpenFile(systemPath, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
 	if err != nil {

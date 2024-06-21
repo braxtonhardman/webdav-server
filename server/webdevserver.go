@@ -9,38 +9,36 @@ import (
 	"path/filepath"
 	"github.com/braxtonhardman/webdav-server/log"
 	"golang.org/x/net/webdav"
+    "errors"
 )
 
 func Start() { 
 
-    
-    
-    // Starting logger to be used later 
+    // Initalize logger
     logger.Start() 
-    logger.LogSystem("Server Started")
+    logger.LogSystem("Logger Successfully Initalized")
 
     user, _ := user.Current()
 
-    // Root Directory of application 
     dataDir := filepath.Join(user.HomeDir, "webdav-server")
     logDir := filepath.Join(dataDir, "log")
                         
     
-    // Check if the root directory /home/johndoer/webdavserver/log exists
+    // Check if the root directory /home/currentuser/webdavserver/log exists
     if _, err := os.Stat(dataDir); os.IsNotExist(err) {
         logger.LogError(err)
         os.Exit(1)
     }
 
-    // Check if the root directory /home/johndoe/webdavserver/log exists
+    // Check if the root directory /home/currentuser/webdavserver/log exists
     if _, err := os.Stat(logDir); os.IsNotExist(err){ 
         log.Fatal(err)
     }
     
     // Specifies that all routes containg prefix /webdav/ will be handled here
+    // Creates a filesystem implementation on that directory 
     handler := &webdav.Handler{
         Prefix:     "/webdav/",
-		// Creates a filesystem implementation on that directory 
         FileSystem: webdav.Dir(dataDir),
         LockSystem: webdav.NewMemLS(),
     }
@@ -63,10 +61,10 @@ func Start() {
         // Checking to make sure the method being used matches are server and if the path is correct 
         if r.Method == http.MethodGet && r.URL.Path == "/webdav/" {
             w.Header().Set("Content-Type", "text/html")
-            // Reads
             entries, err := os.ReadDir(dataDir)
             if err != nil {
                 http.Error(w, "Unable to read directory", http.StatusInternalServerError)
+                logger.LogError(errors.New("HTTP:ERROR - Unable to read directory"))
                 return
             }
 
@@ -91,7 +89,6 @@ func Start() {
     if err != nil {
         logger.LogError(err)
         log.Fatal(err)
-        fmt.Println("Error Occured starting server")
         os.Exit(1)
     }
     
