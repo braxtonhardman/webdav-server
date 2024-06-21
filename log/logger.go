@@ -28,7 +28,7 @@ func Start() {
 	var wg sync.WaitGroup
 
     // Add 2 to the WaitGroup for two goroutines
-    wg.Add(3)
+    wg.Add(2)
 
     // Start goroutines to create files
     go createFile(filepath.Join(dir, "error_log.txt"), &wg)

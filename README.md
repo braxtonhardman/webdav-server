@@ -3,6 +3,9 @@
 Webdav-server implements WebDAV (Web Distributed Authoring and Versioning) allowing for file sharing, editing. and versioning.
 Specifically webdav-server is set up to integrate with linux like operating systems for the ability to use as a "cloud storage" using the native file managment system. 
 The goal of this repository is to abstract the complexity when creating a WebDAV server, for use in home enviroments. 
+# Dependancies 
+
+Make sure Go is installed 
 
 # Installation
 
