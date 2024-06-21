@@ -7,7 +7,7 @@ import (
 	"os"
 	"os/user"
 	"path/filepath"
-	"webdav-server/log"
+	"github.com/braxtonhardman/webdav-server/log"
 	"golang.org/x/net/webdav"
 )
 

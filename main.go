@@ -1,7 +1,7 @@
 package main 
 
 import ( 
-	"webdav-server/server"
+	"github.com/braxtonhardman/webdav-server/server"
 )
 
 func main() { 

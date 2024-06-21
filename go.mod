@@ -1,4 +1,4 @@
-module webdav-server
+module github.com/braxtonhardman/webdav-server
 
 go 1.22.4
 
